@@ -1,9 +1,11 @@
 from pageObjects.LoginPage import loginPage
+from utilities.readProperties import ReadConfig 
+
 
 class Test_001_Login:
-    baseURL = "https://admin-demo.nopcommerce.com/"
-    username = "admin@yourstore.com"
-    password = "admin"
+    baseURL = ReadConfig().getAppURL()
+    username = ReadConfig().getUsername()
+    password = ReadConfig().getUserPassword()
 
     def test_homePageLoaded(self,setup):
         self.driver = setup
@@ -11,7 +13,7 @@ class Test_001_Login:
 
         act_title = self.driver.title
         # it will fail as wrong title given, screenshot will be created
-        if act_title == "Your store. Loginnasdad":
+        if act_title == "Your store. Login":
             assert True
             self.driver.close()
         else:
