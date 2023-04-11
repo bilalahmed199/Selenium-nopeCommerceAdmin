@@ -10,11 +10,13 @@ class Test_001_Login:
         self.driver.get(self.baseURL)
 
         act_title = self.driver.title
-        self.driver.close()
-
-        if act_title == "Your store. Login":
+        # it will fail as wrong title given, screenshot will be created
+        if act_title == "Your store. Loginnasdad":
             assert True
+            self.driver.close()
         else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageLoaded.png")
+            self.driver.close()
             assert False
 
     def test_Login(self, setup ):
@@ -27,10 +29,12 @@ class Test_001_Login:
         self.lp.clickLogin()
 
         act_title = self.driver.title
-        self.driver.close()
-
         if act_title == "Dashboard / nopCommerce administration":
             assert True
+            self.driver.close()
+
         else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
+            self.driver.close()
 
             assert False
