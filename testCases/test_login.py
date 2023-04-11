@@ -29,7 +29,6 @@ class Test_001_Login:
         act_title = self.driver.title
         self.driver.close()
 
-# testing git push
         if act_title == "Dashboard / nopCommerce administration":
             assert True
         else:
