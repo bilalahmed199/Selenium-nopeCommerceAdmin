@@ -13,7 +13,7 @@ class Test_001_Login:
 
         act_title = self.driver.title
         # it will fail as wrong title given, screenshot will be created
-        if act_title == "Your store. Login":
+        if act_title == "wrong title Your store. Login":
             assert True
             self.driver.close()
         else:
