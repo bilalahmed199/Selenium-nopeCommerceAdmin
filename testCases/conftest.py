@@ -30,10 +30,11 @@ def pytest_configure(config):
     config._metadata['Project Name'] = 'nop Commerce'
     config._metadata['Module Name'] = 'Customers'
     config._metadata['Tester'] = 'Bilal'
+    
 
 # it is hook to delete/modify environment info to HTML report
-# @pytest.mark.optionalhook
-# def pytest_metadata(_metadata):
-#     # below info is deleted explicitly to not be shown in the HTML report
-#     metadata.pop("JAVA_Home", None)
-#     metadata.pop("Plugins", None)
+@pytest.mark.optionalhook
+def pytest_metadata(metadata):
+    # below info is deleted explicitly to not be shown in the HTML report
+    metadata.pop("JAVA_Home", None)
+    metadata.pop("Plugins", None)
