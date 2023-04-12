@@ -1,5 +1,4 @@
 #this class is used to save logs
-
 import logging
 
 class LogGenerator:
@@ -8,7 +7,7 @@ class LogGenerator:
     @staticmethod
     def log_generator():
         logging.basicConfig(filename=".\\Logs\\automation.log",
-                        format='%(asctime)s: %(levelname)s: %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p')
+                        format='%(asctime)s: %(levelname)s: %(message)s')
 
         logger = logging.getLogger()
         logger.setLevel(logging.INFO)
