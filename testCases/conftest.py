@@ -35,5 +35,5 @@ def pytest_configure(config):
 # @pytest.mark.optionalhook
 # def pytest_metadata(_metadata):
 #     # below info is deleted explicitly to not be shown in the HTML report
-#     # metadata.pop("JAVA_Home", None)
-#     # metadata.pop("Plugins", None)
+#     metadata.pop("JAVA_Home", None)
+#     metadata.pop("Plugins", None)
