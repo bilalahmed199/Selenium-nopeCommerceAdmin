@@ -19,37 +19,44 @@ class Test_001_Login:
         act_title = self.driver.title
         # it will fail as wrong title given, screenshot will be created
         if act_title == "Your store. Login":
-            self.driver.close()
-            self.logger.info("****** Login page loaded successfuly ******")
+
+            # this print is added to check whether this section of code is executed or not
+            print("test passed check")
             assert True
+            self.driver.close()
+            print("test passed check 2")
+
+            self.logger.info("****** Login page loaded successfuly ******")
+            print("test passed check 3")
 
         else:
+            print("test failed check")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageLoaded.png")
             self.driver.close()
             self.logger.error("****** Login page not loaded ******")
             assert False
 
    
-    # def test_Login(self, setup ):
-    #     self.logger.info("****** Test_001_Login******")
-    #     self.logger.info("****** Verifying user Loggedin with valid data or not ******")
+    def test_Login(self, setup ):
+        self.logger.info("****** Test_001_Login******")
+        self.logger.info("****** Verifying user Loggedin with valid data or not ******")
         
-    #     self.driver = setup
-    #     self.driver.get(self.baseURL)
+        self.driver = setup
+        self.driver.get(self.baseURL)
 
-    #     self.lp = loginPage(self.driver)
-    #     self.lp.setUsername(self.username)
-    #     self.lp.setPassword(self.password)
-    #     self.lp.clickLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.setUsername(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
 
-    #     act_title = self.driver.title
-    #     if act_title == "Dashboard / nopCommerce administration":
-    #         assert True
-    #         self.driver.close()
-    #         self.logger.info("****** Login test passed ******")
+        act_title = self.driver.title
+        if act_title == "Dashboard / nopCommerce administration":
+            assert True
+            self.driver.close()
+            self.logger.info("****** Login test passed ******")
 
-    #     else:
-    #         self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
-    #         self.driver.close()
-    #         self.logger.error("****** Login test failed ******")
-    #         assert False
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
+            self.driver.close()
+            self.logger.error("****** Login test failed ******")
+            assert False
