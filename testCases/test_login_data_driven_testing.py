@@ -3,6 +3,8 @@ from pageObjects.LoginPage import loginPage
 from utilities.readProperties import ReadConfig 
 from datetime import datetime
 from utilities import excelReader
+import time
+from Constants import constants
 
 class Logger:
     def __init__(self, log_file_path):
@@ -20,10 +22,12 @@ logger = Logger(log_file_path)
 # data is readed from Excel file
 class Test_002_DDT_Login:
     baseURL = ReadConfig().getAppURL()
+    username = ReadConfig().getUsername()
+    password = ReadConfig().getUserPassword()
+
     # excel file path
     path = ".//testData/testData.xlsx"
 
-class Test_001_Login:
     #logs data, it will be saved in file
     test_suit_name = '****** Test_Suite_002_Login ******'
     test_case_1 = '****** TC1 - Verifying user Loggedin with valid data or not ******'
@@ -39,7 +43,7 @@ class Test_001_Login:
 
         self.lp = loginPage(self.driver)
         # reading data from excel file
-        self.rows = xcelReader.getRowCount(self.path, "Sheet1" )
+        self.rows = excelReader.getRowCount(self.path, "Sheet1" )
         print("No. of rows in excel file: ", self.rows)
 
         first_status = []   #empty list variable
@@ -94,11 +98,3 @@ class Test_001_Login:
                 logger.write_log(self.end_line)
                 self.driver.close()
                 assert False
-
-
-
-
-
-
-
-   
