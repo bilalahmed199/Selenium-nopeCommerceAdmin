@@ -22,8 +22,8 @@ logger = Logger(log_file_path)
 # data is readed from Excel file
 class Test_002_DDT_Login:
     baseURL = ReadConfig().getAppURL()
-    username = ReadConfig().getUsername()
-    password = ReadConfig().getUserPassword()
+    # username = ReadConfig().getUsername()
+    # password = ReadConfig().getUserPassword()
 
     # excel file path
     path = ".//testData/testData.xlsx"
@@ -57,7 +57,7 @@ class Test_002_DDT_Login:
             self.lp.setUsername(self.userName)
             self.lp.setPassword(self.password)
             self.lp.clickLogin()
-            time.sleep(3)
+            # time.sleep(3)
 
             act_title = self.driver.title
             exp_title = "Dashboard / nopCommerce administration"
@@ -78,23 +78,20 @@ class Test_002_DDT_Login:
                 if self.expectedResult == "Pass":
                     logger.write_log(self.test1_case_failed)
                     logger.write_log(self.end_line)
-                    self.lp.clickLogout()
                     first_status.append("Fail")
-
                 elif self.expectedResult == "Fail":
                     logger.write_log(self.test1_case_pass)
                     logger.write_log(self.end_line)
-                    self.lp.clickLogout()
                     first_status.append("Pass")
 
         # checking the first_status list whether it meets our criteria or not
-        if "Fail" not in first_status:
-            self.driver.close()
-            logger.write_log(self.test1_case_pass)
-            logger.write_log(self.end_line)
-
-        else:
-            logger.write_log(self.test1_case_failed)
-            logger.write_log(self.end_line)
-            self.driver.close()
-            assert False
+            if "Fail" not in first_status:
+                logger.write_log(self.test1_case_pass)
+                logger.write_log(self.end_line)
+                self.driver.close()
+                assert True
+            else:
+                logger.write_log(self.test1_case_failed)
+                logger.write_log(self.end_line)
+                self.driver.close()
+                assert False
