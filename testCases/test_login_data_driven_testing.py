@@ -28,18 +28,11 @@ class Test_002_DDT_Login:
     # excel file path
     path = ".//testData/testData.xlsx"
 
-    # logs data, it will be saved in file
-    test_suit_name = '****** Test_Suite_002_Login ******'
-    test_case_1 = '****** TC1 - Verifying user Loggedin with valid data or not ******'
-    test1_case_pass = "****** Pass - User Loggedin successfuly ******"
-    test1_case_failed = "****** Fail - User Logedin failed ******"
-    end_line = '*******************************************\n'
-
     def test_Login_DDT(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)
-        logger.write_log(self.test_suit_name)
-        logger.write_log(self.test_case_1)
+        logger.write_log(constants.test_suite_002)
+        logger.write_log(constants.TS2_test_case_1)
 
         self.lp = loginPage(self.driver)
         # reading data from excel file
@@ -63,34 +56,34 @@ class Test_002_DDT_Login:
 
             if act_title == exp_title:
                 if self.expectedResult == "Pass":
-                    logger.write_log(self.test1_case_pass)
-                    logger.write_log(self.end_line)
+                    logger.write_log(constants.TS2_TC1_pass)
+                    logger.write_log(constants.end_line)
                     self.lp.clickLogout()
                     first_status.append("Pass")
                 elif self.expectedResult == "Fail":
-                    logger.write_log(self.test1_case_failed)
-                    logger.write_log(self.end_line)
+                    logger.write_log(constants.TS2_TC1_failed)
+                    logger.write_log(constants.end_line)
                     self.lp.clickLogout()
                     first_status.append("Fail")
 
             elif act_title != exp_title:
                 if self.expectedResult == "Pass":
-                    logger.write_log(self.test1_case_failed)
-                    logger.write_log(self.end_line)
+                    logger.write_log(constants.TS2_TC1_failed)
+                    logger.write_log(constants.end_line)
                     first_status.append("Fail")
                 elif self.expectedResult == "Fail":
-                    logger.write_log(self.test1_case_pass)
-                    logger.write_log(self.end_line)
+                    logger.write_log(constants.TS2_TC1_pass)
+                    logger.write_log(constants.end_line)
                     first_status.append("Pass")
 
         #checking the first_status list whether it meets our criteria or not
             if "Fail" not in first_status:
                 assert True
-                logger.write_log(self.test1_case_pass)
-                logger.write_log(self.end_line)
+                logger.write_log(constants.TS2_TC1_pass)
+                logger.write_log(constants.end_line)
                 # self.driver.close()
             else:
-                logger.write_log(self.test1_case_failed)
-                logger.write_log(self.end_line)
+                logger.write_log(constants.TS2_TC1_failed)
+                logger.write_log(constants.end_line)
                 # self.driver.close()
                 assert False

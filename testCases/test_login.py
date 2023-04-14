@@ -25,21 +25,21 @@ class Test_001_Login:
         self.driver = setup
         self.driver.get(self.baseURL)
         
-        logger.write_log(constants.test_suit_name)
-        logger.write_log(constants.test_case_1)
+        logger.write_log(constants.test_suite_001)
+        logger.write_log(constants.TS1_test_case_1)
 
         act_title = self.driver.title
         # it will fail as wrong title given, screenshot will be created
         if act_title == "Your store. Login":
             assert True
             self.driver.close()
-            logger.write_log(constants.test1_case_pass)
+            logger.write_log(constants.TS1_TC1_pass)
             logger.write_log(constants.end_line)
 
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageLoaded.png")
             self.driver.close()
-            logger.write_log(constants.test1_case_failed)
+            logger.write_log(constants.TS1_TC1__failed)
             logger.write_log(constants.end_line)
             assert False
 
@@ -48,8 +48,8 @@ class Test_001_Login:
         self.driver = setup
         self.driver.get(self.baseURL)
         
-        logger.write_log(constants.test_suit_name)
-        logger.write_log(constants.test_case_2)
+        logger.write_log(constants.test_suite_001)
+        logger.write_log(constants.TS1_test_case_2)
 
         self.lp = loginPage(self.driver)
         self.lp.setUsername(self.username)
@@ -60,12 +60,12 @@ class Test_001_Login:
         if act_title == "Dashboard / nopCommerce administration":
             assert True
             self.driver.close()
-            logger.write_log(constants.test2_case_pass)
+            logger.write_log(constants.TS1_TC2_pass)
             logger.write_log(constants.end_line)
 
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
             self.driver.close()
-            self.logger.error(constants.test2_case_failed)
+            self.logger.error(constants.TS1_TC2_failed)
             logger.write_log(constants.end_line)
             assert False
