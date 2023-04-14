@@ -75,26 +75,26 @@ class Test_002_DDT_Login:
                     first_status.append("Fail")
             
             elif act_title != exp_title:
-                 if self.expectedResult == "Pass":
+                if self.expectedResult == "Pass":
                     logger.write_log(self.test1_case_failed)
                     logger.write_log(self.end_line)
                     self.lp.clickLogout()
                     first_status.append("Fail")
 
-                 elif self.expectedResult == "Fail":
+                elif self.expectedResult == "Fail":
                     logger.write_log(self.test1_case_pass)
                     logger.write_log(self.end_line)
                     self.lp.clickLogout()
                     first_status.append("Pass")
 
-            # checking the firts_status list whether it meets our criteria or not
-            if "Fail" not in first_status:
-                logger.write_log(self.test1_case_pass)
-                logger.write_log(self.end_line)
-                self.driver.close()
-                assert True
-            else:
-                logger.write_log(self.test1_case_failed)
-                logger.write_log(self.end_line)
-                self.driver.close()
-                assert False
+        # checking the first_status list whether it meets our criteria or not
+        if "Fail" not in first_status:
+            self.driver.close()
+            logger.write_log(self.test1_case_pass)
+            logger.write_log(self.end_line)
+
+        else:
+            logger.write_log(self.test1_case_failed)
+            logger.write_log(self.end_line)
+            self.driver.close()
+            assert False

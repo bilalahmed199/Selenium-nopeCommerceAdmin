@@ -8,7 +8,7 @@ class loginPage:
     txtbox_username_id = "Email"
     txtbox_password_id = "Password"
     btn_login_xpath = "//button[@type='submit']"
-    btn_logout_xpath = "//a[normalize-space()='Logout']"
+    btn_logout_xpath = "(//a[normalize-space()='Logout'])[1]"
 
     def __init__(self, driver):
         self.driver = driver
