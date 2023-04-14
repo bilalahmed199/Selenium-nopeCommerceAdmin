@@ -22,7 +22,7 @@ logger = Logger(log_file_path)
 
 
 # data driven testing
-# data is readed from Excel file
+# data is readed from Excel file 
 class Test_002_DDT_Login:
     baseURL = ReadConfig().getAppURL()
     # excel file path
@@ -44,11 +44,11 @@ class Test_002_DDT_Login:
         # reading data from excel file
         for r in range(2, self.rows + 1):
             self.user = excelReader.readData(self.path, "Sheet1", r, 1)
-            self.passwrd = excelReader.readData(self.path, "Sheet1", r, 2)
+            self.password = excelReader.readData(self.path, "Sheet1", r, 2)
             self.expectedResult = excelReader.readData(self.path, "Sheet1", r, 3)
 
             self.lp.setUsername(self.user)
-            self.lp.setPassword(self.passwrd)
+            self.lp.setPassword(self.password)
             self.lp.clickLogin()
 
             act_title = self.driver.title
