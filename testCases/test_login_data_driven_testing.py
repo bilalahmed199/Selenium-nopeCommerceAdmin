@@ -22,9 +22,6 @@ logger = Logger(log_file_path)
 # data is readed from Excel file
 class Test_002_DDT_Login:
     baseURL = ReadConfig().getAppURL()
-    # username = ReadConfig().getUsername()
-    # password = ReadConfig().getUserPassword()
-
     # excel file path
     path = ".//testData/testData.xlsx"
 
@@ -50,14 +47,13 @@ class Test_002_DDT_Login:
 
         # reading data from excel file
         for r in range(2, self.rows + 1):
-            self.userName = excelReader.readDAta(self.path, "Sheet1",r,1)
-            self.password = excelReader.readDAta(self.path, "Sheet1",r,2)
-            self.expectedResult = excelReader.readDAta(self.path, "Sheet1",r,3)
+            self.user = excelReader.readData(self.path, "Sheet1",r,1)
+            self.passwrd = excelReader.readData(self.path, "Sheet1",r,2)
+            self.expectedResult = excelReader.readData(self.path, "Sheet1",r,3)
 
-            self.lp.setUsername(self.userName)
-            self.lp.setPassword(self.password)
+            self.lp.setUsername(self.user)
+            self.lp.setPassword(self.passwrd)
             self.lp.clickLogin()
-            # time.sleep(3)
 
             act_title = self.driver.title
             exp_title = "Dashboard / nopCommerce administration"
