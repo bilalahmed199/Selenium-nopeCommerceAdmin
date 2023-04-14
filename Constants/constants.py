@@ -1,5 +1,5 @@
-    
-#logs data, it will be saved in file
+#logs data to be shown, it will be saved in file
+# this is a generic file to save data which is used repeatedly
 test_suit_name = '****** Test_Suite_001_Login ******'
 test_case_1 = '****** TC1 - Verifying Login page loaded or not ******'
 test1_case_pass = "****** Pass - Login page loaded successfuly ******"
