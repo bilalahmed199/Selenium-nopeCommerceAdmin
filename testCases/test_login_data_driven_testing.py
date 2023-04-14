@@ -1,9 +1,7 @@
-import os
 from pageObjects.LoginPage import loginPage
 from utilities.readProperties import ReadConfig
 from datetime import datetime
 from utilities import excelReader
-import time
 from Constants import constants
 
 

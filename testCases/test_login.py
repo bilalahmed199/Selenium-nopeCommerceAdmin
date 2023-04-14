@@ -1,4 +1,3 @@
-import os
 from pageObjects.LoginPage import loginPage
 from utilities.readProperties import ReadConfig 
 from datetime import datetime
