@@ -135,9 +135,9 @@ class AddNewCustomer:
             self.listItem = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemVendors_xpath)))
 
-        # else:
-        #     self.listItem = self.listItem = WebDriverWait(self.driver, 10).until(
-        #     expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemGuests_xpath)))
+        else:
+            self.listItem = self.listItem = WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemGuests_xpath)))
         # selecting the customer role
         # below line didn't worked, so will use execute_script line 
         # self.listItem.click()
