@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
+
+// I tried to change the RUN CODE button to work with PYTEST
+// So that I could execute it by run code as I execute the code from terminal using pytest command button but it didn't worked
+
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Run pytest",
+//             "type": "python",
+//             "request": "launch",
+//             "module": "pytest",
+//             "args": [
+//                 "\"${workspaceFolder}/testCases/test_login_data_driven_testing.py\"",
+//                 "--browser",
+//                 "chrome"
+//             ],
+//             "console": "integratedTerminal",
+//             "cwd": "${workspaceFolder}"
+//         }
+//     ]
+// }
