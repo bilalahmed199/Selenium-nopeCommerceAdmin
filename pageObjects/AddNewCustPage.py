@@ -119,8 +119,8 @@ class AddNewCustomer:
 
         elif role == "Guests":
             # we can only either select Registered or Guest as role
-            # removing Registered as it is selected by default
-            # self.driver.find_element(By.XPATH, "//span[@title='delete']").click()
+            # test will fail in this case as we will select both Guests & Registered
+            select_role.click()
             self.listItem = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemGuests_xpath)))
         
