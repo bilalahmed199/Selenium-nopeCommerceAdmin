@@ -67,11 +67,6 @@ class Test_003_AddCustomer:
             assert False == False
         self.driver.close()
 
-
-
-
-
-
 # to generate random data of 8 charactors string
 def random_generator(size=8, chars=string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size)) 
