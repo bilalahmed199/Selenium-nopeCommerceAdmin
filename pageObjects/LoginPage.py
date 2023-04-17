@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-
 class loginPage:
     txtbox_username_id = "Email"
     txtbox_password_id = "Password"
@@ -13,19 +12,24 @@ class loginPage:
         self.driver = driver
 
     def setUsername(self, username):
-        self.driver.find_element(By.ID, self.txtbox_username_id).clear()
-
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, self.txtbox_username_id))).send_keys(username)
+        set_username = WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.ID, self.txtbox_username_id)))
+        set_username.clear()
+        set_username.send_keys(username)
 
     def setPassword(self,password):
-        self.driver.find_element(By.ID, self.txtbox_password_id).clear()
-
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, self.txtbox_password_id))).send_keys(password)
+        set_password = WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.ID, self.txtbox_password_id)))
+        set_password.clear()
+        set_password.send_keys(password)
 
     def clickLogin(self):
-        self.driver.find_element(By.XPATH, self.btn_login_xpath).click()
+        click_login = WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH, self.btn_login_xpath)))
+        click_login.click()
 
     def clickLogout(self):
-        self.driver.find_element(By.XPATH,self.btn_logout_xpath).click()
+        click_logout = WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH, self.btn_logout_xpath)))
+        click_logout.click()
+

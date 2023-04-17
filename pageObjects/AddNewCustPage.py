@@ -74,13 +74,12 @@ class AddNewCustomer:
             element_id = self.rd_genderMale_id
 
         WebDriverWait(self.driver, 10).until(
-        expected_conditions.presence_of_element_located((By.ID, element_id))).click()
-
+        expected_conditions.element_to_be_clickable((By.ID, element_id))).click()
 
     def enterDOB(self, dob):
         enter_DOB = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.ID, self.txt_dob_id)))
-        enter_DOB.click()
+        enter_DOB.clear()
         enter_DOB.send_keys(dob)
 
     def enterCompanyName(self, companyName):
@@ -107,12 +106,14 @@ class AddNewCustomer:
     
     def selectIsTaxExempt(self):
         is_tax_exampt = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.XPATH, self.rd_IsTaxExempt_xpath)))
+            expected_conditions.element_to_be_clickable((By.XPATH, self.rd_IsTaxExempt_xpath)))
         is_tax_exampt.click()
 
     def selectRole(self, role):
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.XPATH, self.list_custRoles_xpath))).click()
+        select_role = WebDriverWait(self.driver, 10).until(
+        expected_conditions.element_to_be_clickable((By.XPATH, self.list_custRoles_xpath)))  # Changed to element_to_be_clickable for better reliability
+        select_role.click()
+
         
         if role == "Registered":
             self.listItem = WebDriverWait(self.driver, 10).until(
