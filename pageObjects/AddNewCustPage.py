@@ -1,5 +1,8 @@
 import time
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
 class AddNewCustomer:
     linkCustomers_menu_xpath = "//a[@href='#']//p[contains(text(),'Customers')]"
@@ -14,7 +17,7 @@ class AddNewCustomer:
     txt_dob_id = "DateOfBirth"
     txt_company_id = "Company"
     rd_IsTaxExempt_xpath = "//input[@id='IsTaxExempt']"
-    txt_newsletter_xpath = "//div[@class='input-group-append']//div[@role='listbox']"
+    list_newsletter_xpath = "(//div[@role='listbox'])[1]"
     select_newsletter_xpath = "//li[normalize-space()='Test store 2']"
     list_custRoles_xpath = "(//div[@role='listbox'])[2]"
     list_listItemRegistered_xpath = "//li[normalize-space()='Registered']"
@@ -44,24 +47,24 @@ class AddNewCustomer:
 
     def enterEmail(self, email):
         enter_email = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.id, self.txt_email_id)))
+            expected_conditions.presence_of_element_located((By.ID, self.txt_email_id)))
         enter_email.click()
         enter_email.send_keys(email)
     
     def enterPassword(self, password):
         enter_password = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.id, self.txt_password_id)))
+            expected_conditions.presence_of_element_located((By.ID, self.txt_password_id)))
         enter_password.send_keys(password)
 
     def enterFirstName(self, firstName):
         first_name = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.id, self.txt_firstName_id)))
+            expected_conditions.presence_of_element_located((By.ID, self.txt_firstName_id)))
         first_name.clear()
         first_name.send_keys(firstName)
 
     def enterLastName(self, lastName):
         last_name = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.id, self.txt_lastName_id)))
+            expected_conditions.presence_of_element_located((By.ID, self.txt_lastName_id)))
         last_name.clear()
         last_name.send_keys(lastName)
 
@@ -92,17 +95,10 @@ class AddNewCustomer:
     def enterNewsletter(self, newsletter):
         enter_newsletter = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.XPATH, self.list_newsletter_xpath)))
-        enter_newsletter.clear()
-        enter_newsletter.send_keys(newsletter)
+        enter_newsletter.click()
 
         WebDriverWait(self.driver, 10).until(
         expected_conditions.element_to_be_clickable((By.XPATH, self.select_newsletter_xpath))).click()
-   
-    def enterCompanyName(self, companyName):
-        company_name = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, self.txt_company_id)))
-        company_name.clear()
-        company_name.send_keys(companyName)
     
     def selectIsTaxExempt(self):
         is_tax_exampt = WebDriverWait(self.driver, 10).until(
@@ -111,10 +107,9 @@ class AddNewCustomer:
 
     def selectRole(self, role):
         select_role = WebDriverWait(self.driver, 10).until(
-        expected_conditions.element_to_be_clickable((By.XPATH, self.list_custRoles_xpath)))  # Changed to element_to_be_clickable for better reliability
+            expected_conditions.element_to_be_clickable((By.XPATH, self.list_custRoles_xpath)))
         select_role.click()
 
-        
         if role == "Registered":
             self.listItem = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemRegistered_xpath)))
@@ -125,7 +120,7 @@ class AddNewCustomer:
         elif role == "Guests":
             # we can only either select Registered or Guest as role
             # removing Registered as it is selected by default
-            self.driver.find_element(By.XPATH, "//span[@title='delete']").click()
+            # self.driver.find_element(By.XPATH, "//span[@title='delete']").click()
             self.listItem = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.XPATH, self.list_listItemGuests_xpath)))
         
@@ -144,10 +139,7 @@ class AddNewCustomer:
         # self.listItem.click()
         self.driver.execute_script("arguments[0].click();", self.listItem)
 
-
-
-
-
-
-
-
+    def clickOnSave(self):
+        click_save = WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.XPATH, self.btn_save_xpath)))
+        click_save.click()

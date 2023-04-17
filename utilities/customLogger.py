@@ -1,15 +1,12 @@
-# #this class is used to save logs
-# import logging
+# #this class is used to save logs in a file, i.e., autoamtion.log
 
-# class LogGenerator:
+from datetime import datetime
 
-#     #static methods are used so that we dont need to pass any parameter
-#     @staticmethod
-#     def log_generator():
-#         logging.basicConfig(filename="..\\Logs\\automation.txt", filemode= "a",
-#                         format='%(asctime)s: %(levelname)s: %(message)s')
+class Logger:
+    def __init__(self, log_file_path):
+        self.log_file_path = log_file_path
 
-#         logger = logging.getLogger()
-#         logger.setLevel(logging.INFO)
-#         return logger
-
+    def write_log(self, log_message):
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        with open(self.log_file_path, 'a') as log_file:
+            log_file.write(f'{current_time} - {log_message}\n')

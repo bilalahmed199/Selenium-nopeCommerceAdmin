@@ -16,4 +16,10 @@ TS2_test_case_1 = '****** TS2 -TC1 - Verify user logged in from excel ******'
 TS2_TC1_pass = "****** Pass - User Loggedin successfuly ******"
 TS2_TC1_failed = "****** Fail - User Loggedin failed ******"
 
+# Test Suite 3
+test_suite_003 = '****** TS3 - Test_Suite_003_Add new customer ******'
+TS3_test_case_1 = '****** TS3 -TC1 - Add new customer with valid data ******'
+TS3_TC1_pass = "****** Pass - Customer added successfuly ******"
+TS3_TC1_failed = "****** Fail - Customer added failed ******"
+
 end_line = '*******************************************\n'
