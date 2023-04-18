@@ -38,3 +38,4 @@ def pytest_metadata(metadata):
     # Below info is deleted explicitly to not be shown in the HTML report
     metadata.pop("JAVA_Home", None)
     metadata.pop("Plugins", None)
+    return metadata
