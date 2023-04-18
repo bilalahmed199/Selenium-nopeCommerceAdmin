@@ -38,11 +38,31 @@ class Test_004_SearchCustomer:
 
         # data from SearchCustomer class, Search customer by email
         searchcust = SearchCustomer(self.driver)
-
-        searchcust.searchEmail("victoria_victoria@nopCommerce.com")
+        searchcust.searchEmail("bilaltest@test.com")
         searchcust.clickOnSearch()
         time.sleep(3)
 
-        status = searchcust.searchCustomerByEmail("victoria_victoria@nopCommerce.com")
-        assert True == status
+        custFound = self.driver.find_element(By().XPATH, "//td[normalize-space()='Bilal Test']")
+        print(custFound.text)
+        if custFound.text == "Bilal Test":
+            assert True
+            self.logger.write_log(constants.TS4_TC1_pass)
+            self.logger.write_log(constants.end_line)
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_searchCustomer.png")
+            self.logger.write_log(constants.TS4_TC1_failed)
+            self.logger.write_log(constants.end_line)
+            assert False
+            
+
+
+        # status = searchcust.searchCustomerByEmail("bilaltest@test.com")
+        # if status == "bilaltest@test.com":
+        #     self.logger.write_log(constants.TS4_TC1_pass)
+        #     self.logger.write_log(constants.end_line)
+        # else:
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_searchCustomer.png")
+        #     self.logger.write_log(constants.TS4_TC1_failed)
+        #     self.logger.write_log(constants.end_line)
+        #     assert False
 

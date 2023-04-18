@@ -4,7 +4,7 @@
 test_suite_001 = '****** TS1 - Test_Suite_001_Login ******'
 TS1_test_case_1 = '****** TS1 - TC1 - Verifying Login page loaded or not ******'
 TS1_TC1_pass = "****** Pass - Login page loaded successfuly ******"
-TS1_TC1__failed = "****** Fail - Login page not loaded ******" 
+TS1_TC1_failed = "****** Fail - Login page not loaded ******" 
 
 TS1_test_case_2 = '****** TS1 - TC2 - Verify user Login or not ******'
 TS1_TC2_pass = "****** Pass - User Loggedin successfuly ******"

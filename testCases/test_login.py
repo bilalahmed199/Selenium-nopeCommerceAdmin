@@ -54,6 +54,6 @@ class Test_001_Login:
             self.logger.write_log(constants.end_line)
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
-            self.logger.error(constants.TS1_TC2_failed)
+            self.logger.write_log(constants.TS1_TC2_failed)
             self.logger.write_log(constants.end_line)
             assert False
