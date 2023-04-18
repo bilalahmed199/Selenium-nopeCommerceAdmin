@@ -48,12 +48,13 @@ class AddNewCustomer:
     def enterEmail(self, email):
         enter_email = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.ID, self.txt_email_id)))
-        enter_email.click()
+        enter_email.clear()
         enter_email.send_keys(email)
     
     def enterPassword(self, password):
         enter_password = WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.ID, self.txt_password_id)))
+        enter_password.clear()
         enter_password.send_keys(password)
 
     def enterFirstName(self, firstName):

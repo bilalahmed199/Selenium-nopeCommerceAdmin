@@ -9,6 +9,9 @@ class Test_001_Login:
     username = ReadConfig().getUsername()
     password = ReadConfig().getUserPassword()
 
+    def tearDown(self):
+        self.driver.quit()
+
 
     def test_loginPageLoaded(self,setup):
         self.driver = setup
@@ -21,15 +24,11 @@ class Test_001_Login:
 
         act_title = self.driver.title
         # it will fail as wrong title given, screenshot will be created
-        if act_title == "Your store. Login":
-            assert True
-            self.driver.close()
+        if act_title == "Your storqwee. Login":
             self.logger.write_log(constants.TS1_TC1_pass)
             self.logger.write_log(constants.end_line)
-
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageLoaded.png")
-            self.driver.close()
             self.logger.write_log(constants.TS1_TC1_failed)
             self.logger.write_log(constants.end_line)
             assert False
@@ -51,14 +50,10 @@ class Test_001_Login:
 
         act_title = self.driver.title
         if act_title == "Dashboard / nopCommerce administration":
-            assert True
-            self.driver.close()
             self.logger.write_log(constants.TS1_TC2_pass)
             self.logger.write_log(constants.end_line)
-
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_login.png")
-            self.driver.close()
             self.logger.error(constants.TS1_TC2_failed)
             self.logger.write_log(constants.end_line)
             assert False

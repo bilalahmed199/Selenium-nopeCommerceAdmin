@@ -32,7 +32,7 @@ class Test_003_AddCustomer:
         self.lp.setPassword(self.password)
         self.lp.clickLogin()
 
-        # data from AddNewCustPage class
+        # data from AddNewCustPage class, Go to Add customer page
         self.addcust = AddNewCustomer(self.driver)
         self.addcust.clickOnCustomersMenu()
         self.addcust.clickOnCustomersMenuItems()
@@ -55,15 +55,16 @@ class Test_003_AddCustomer:
         # this will save the message shown on the screen in text
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
 
+
         if "customer has been added successfully" in self.msg:
-            assert True == True
             self.logger.write_log(constants.TS3_TC1_pass)
-            self.logger.write_log(constants.end_line)
         else:
-            assert False == False
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer.png")
             self.logger.write_log(constants.TS3_TC1_failed)
-            self.logger.write_log(constants.end_line)
+
+        assert "customer has been added successfully" in self.msg, "Customer was not added successfully"
+        self.logger.write_log(constants.end_line)
+
         self.driver.close()
 
 # to generate random data of 8 charactors string
