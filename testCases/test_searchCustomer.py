@@ -61,15 +61,15 @@ class Test_004_SearchCustomer:
         get_source = self.driver.page_source
  
         # Text you want to search
-        search_text = "Bilal Test"
+        search_text = "Ali Test"
         if search_text in get_source:
             assert True
-            self.logger.write_log(constants.TS4_TC2_pass)
+            self.logger.write_log(constants.TS4_TC1_pass)
             self.logger.write_log(constants.end_line)
             self.driver.quit()
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_searchCustomerByEmail.png")
-            self.logger.write_log(constants.TS4_TC2_failed)
+            self.logger.write_log(constants.TS4_TC1_failed)
             self.logger.write_log(constants.end_line)
             self.driver.quit()
             assert False
@@ -77,7 +77,6 @@ class Test_004_SearchCustomer:
 
 
     def test_searchCustByName(self, setup):
-
         self.driver = setup
         self.driver.get(self.baseURL)
         # self.driver.maximize_window()
@@ -113,12 +112,12 @@ class Test_004_SearchCustomer:
         search_text = "Bilal Tesjkht"           # it will fail as wrong value given
         if search_text in get_source:
             assert True
-            self.logger.write_log(constants.TS4_TC1_pass)
+            self.logger.write_log(constants.TS4_TC2_pass)
             self.logger.write_log(constants.end_line)
             self.driver.quit()
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_searchCustomerByName.png")
-            self.logger.write_log(constants.TS4_TC1_failed)
+            self.logger.write_log(constants.TS4_TC2_failed)
             self.logger.write_log(constants.end_line)
             self.driver.quit()
             assert False
