@@ -39,8 +39,8 @@ class Test_003_AddCustomer:
         self.addcust.clickOnAddNew()
 
         # to generate random email everytime
-        # self.email = random_generator() + "@gmail.com"
-        self.addcust.enterEmail("bilaltest@test.com")
+        self.email = random_generator() + "@gmail.com"
+        self.addcust.enterEmail(self.email)
         self.addcust.enterPassword("abc123")
         self.addcust.enterFirstName("Bilal")
         self.addcust.enterLastName("Test")
