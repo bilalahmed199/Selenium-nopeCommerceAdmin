@@ -6,7 +6,8 @@ from selenium.webdriver.common.by import By
 
 class AddNewCustomer:
     linkCustomers_menu_xpath = "//a[@href='#']//p[contains(text(),'Customers')]"
-    linkCustomers_menuItem_xpath = "(//p[contains(text(),'Customers')])[2]"
+    # linkCustomers_menuItem_xpath = "(//p[contains(text(),'Customers')])[2]"
+    linkCustomers_menuItem_xpath = "//a[@href='/Admin/Customer/List']//p[contains(text(),'Customers')]"
     btn_addNew_xpath = "//a[@class='btn btn-primary']"
     txt_email_id = "Email"
     txt_password_id = "Password"
@@ -37,7 +38,7 @@ class AddNewCustomer:
     
     def clickOnCustomersMenuItems(self):
         customers_menu_items = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.XPATH, self.linkCustomers_menuItem_xpath)))
+            expected_conditions.element_to_be_clickable((By.XPATH, self.linkCustomers_menuItem_xpath)))
         customers_menu_items.click()
     
     def clickOnAddNew(self):
