@@ -7,8 +7,8 @@ from selenium.webdriver.common.by import By
 class SearchCustomer():
     # Add customer page
     txt_search_email_xpath = "//input[@id='SearchEmail']"
-    txt_search_firstName_id = "SearchFirstName"
-    txt_search_lastName_id = "SearchLastName"
+    txt_search_firstName_xpath = "//input[@id='SearchFirstName']"
+    txt_search_lastName_xpath = "//input[@id='SearchLastName']"
     btn_search_id = "search-customers"
 
     tbl_search_results_xpath = "//table[@role='grid']"
@@ -27,13 +27,13 @@ class SearchCustomer():
     
     def enterFirstName(self, fname):
         enter_fname = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, self.txt_search_firstName_id)))
+            expected_conditions.presence_of_element_located((By.XPATH, self.txt_search_firstName_xpath)))
         enter_fname.clear()
         enter_fname.send_keys(fname)
 
     def enterLastName(self, lname):
         enter_lname = WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, self.txt_search_lastName_id)))
+            expected_conditions.presence_of_element_located((By.XPATH, self.txt_search_lastName_xpath)))
         enter_lname.clear()
         enter_lname.send_keys(lname)
 
